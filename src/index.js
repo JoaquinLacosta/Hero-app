@@ -1,6 +1,8 @@
 import React from "react"
 import ReactDOM from "react-dom"
+import App from "./routes/App"
+import "./index.scss"
 
 const container = document.getElementById("App")
 
-ReactDOM.render(<h1>Hola Mundo</h1>, container)
+ReactDOM.render(<App/>, container)
