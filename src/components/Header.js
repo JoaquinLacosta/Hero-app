@@ -3,7 +3,7 @@ import "./styles/Header.scss"
 import { Link } from "react-router-dom"
 import AppContext from "../context/AppContext"
 
-const Header = ({ isLogin, isTeam }) => {
+const Header = ({ isLogin, isHeroes }) => {
   const { state } = useContext(AppContext)
   const hasUser = Object.keys(state.User).length
   return(
@@ -15,8 +15,8 @@ const Header = ({ isLogin, isTeam }) => {
       </div>
       <nav className="Header__nav">
         <ul className="Nav__list">
-          <li className={isTeam ? "Nav__list-item selected" : "Nav__list-item"}>
-            <Link to="/team">Team</Link>
+          <li className={isHeroes ? "Nav__list-item selected" : "Nav__list-item"}>
+            <Link to="/heroes">Heroes</Link>
           </li>
           <li className={isLogin ? "Nav__list-item selected" : "Nav__list-item"}>
             <Link to="/login">{!hasUser ? "Login" : "LogOut"}</Link>

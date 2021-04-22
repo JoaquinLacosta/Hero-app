@@ -5,7 +5,14 @@ const useHeroes = (api) => {
   const [heroes, setHeroes] = useState()
   useEffect(() => {
     axios.get(api)
-      .then(data => setHeroes(data))
+      .then(data => {
+        if(data.status == 200) {
+          setHeroes(data)
+        }
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }, [api])
 
   return heroes
