@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom"
 import NotFound from "../containers/NotFound"
 import Home from "../containers/Home"
 import Login from "../containers/Login"
+import CharacterDetails from "../containers/CharacterDetails"
 import useInitialState from "../hooks/useInitialState"
 import AppContext from "../context/AppContext"
 
@@ -14,6 +15,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Home}/>
+          <Route exact path="/:id" component={CharacterDetails}/>
           <Route exact path="/login" component={Login}/>
           <Route component={NotFound}/>
         </Switch>

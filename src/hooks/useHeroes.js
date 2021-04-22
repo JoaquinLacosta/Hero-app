@@ -7,7 +7,7 @@ const useHeroes = (api) => {
     axios.get(api)
       .then(data => {
         if(data.status == 200) {
-          setHeroes(data)
+          setHeroes(data.data)
         }
       })
       .catch(err => {

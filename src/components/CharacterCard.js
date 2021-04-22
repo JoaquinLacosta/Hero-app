@@ -27,7 +27,7 @@ const CharacterCard = (props) => {
         <div className="Character__buttons">
           {
             props.isTeam ? <button onClick={handleRemove(props.id)} className="Character__buttons-remove">Remove from team</button>
-            : <button onClick={handleRemove(props)} className="Character__buttons-remove">Add to team</button>
+            : <button onClick={handleRemove(props.id)} className="Character__buttons-remove">Add to team</button>
           }
           
           <Link to={`/${props.id}`} className="Details__button">Details</Link>

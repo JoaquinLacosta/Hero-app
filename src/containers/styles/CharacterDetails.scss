@@ -1,0 +1,64 @@
+.Hero__description {
+  position: relative;
+  width: 100%;
+  height: auto;
+  color: white;
+  .Description__container {
+    width: 100%;
+    height: auto;
+    padding: 30px 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    &-image {
+      border: 2px rgb(173, 173, 173) solid;
+      border-radius: 5px;
+      background-color: rgba($color: #291720, $alpha: 0.7);
+      width: 100%;
+      max-width: 300px;
+      img {
+        width: 100%;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+      }
+      p {
+        font-size: 2rem;
+        padding-left: 5px;
+      }
+    }
+    &-biography {
+      padding-left: 25px;
+      background-color: #050505b0;
+      min-width: 300px;
+      max-width: 600px;
+      width: 70%;
+      .Biography__item {
+        padding-top: 5px;
+        h2 {
+          display: inline-block;
+          border-bottom: 2px white solid;
+        }
+        p {
+          font-size: 1.6rem;
+          padding: 5px 0;
+          font-weight: 600;
+          span {
+            font-weight: 400;
+            font-size: 1.4rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and(max-width: 425px) {
+  .Description__container {
+    &-image {
+      margin: 0 auto;
+    }
+    &-biography {
+      padding-left: 0;
+    }
+  }
+}

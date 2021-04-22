@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import AppContext from "../context/AppContext"
 
 const Header = ({ isLogin, isHeroes }) => {
-  const { state } = useContext(AppContext)
+  const { state, logOut } = useContext(AppContext)
   const hasUser = Object.keys(state.User).length
   return(
     <header className="Header">
@@ -19,7 +19,10 @@ const Header = ({ isLogin, isHeroes }) => {
             <Link to="/heroes">Heroes</Link>
           </li>
           <li className={isLogin ? "Nav__list-item selected" : "Nav__list-item"}>
-            <Link to="/login">{!hasUser ? "Login" : "LogOut"}</Link>
+            {
+              !hasUser ? <Link to="/login">Login</Link>
+              : <Link onClick={logOut} to="/login">LogOut</Link>
+            }
           </li>
         </ul>
       </nav>

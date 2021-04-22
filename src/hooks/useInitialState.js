@@ -6,7 +6,7 @@ const useInitialState = () => {
   const [Team, setTeam] = useState({team: [...state.Heroes, ...state.Villains]})
 
   let powerstats = []
-  let appearance = {}
+  let appearance = []
 
   Team.team.map(item => {
     const Powerstats = item.powerstats
@@ -14,9 +14,13 @@ const useInitialState = () => {
     powerstats = [...powerstats,
         Powerstats
     ]
-    appearance = {...appearance,
-      Appearance
-    }
+    appearance = [
+      ...appearance,
+      {
+          height: parseInt(Appearance.height[1]),
+          weight: parseInt(Appearance.weight[1])
+      }
+  ]
 
     return {
       powerstats,
@@ -31,7 +35,8 @@ const useInitialState = () => {
   const sumPower = powerstats.reduce((acum, el) => acum + parseInt(el.power), 0)
   const sumCombat = powerstats.reduce((acum, el) => acum + parseInt(el.combat), 0)
 
-
+  const sumHeight = appearance.reduce((acum, el) => acum + el.height, 0)
+  const sumWeight = appearance.reduce((acum, el) => acum + el.weight, 0)
 
 
   const sumAllStats = [
@@ -68,7 +73,15 @@ const useInitialState = () => {
   ]
 
   const sumAllHeightAndWeights = {
-    
+    height: sumHeight,
+    weight: sumWeight
+}
+
+  const logOut = () => {
+    setState({
+      ...state,
+      User: {}
+    })
   }
 
   const setUser = (data) => {
@@ -88,8 +101,10 @@ const useInitialState = () => {
     state,
     Team,
     sumAllStats,
+    sumAllHeightAndWeights,
     setUser,
-    removeHero
+    removeHero,
+    logOut
   }
 }
 
