@@ -22,11 +22,17 @@ const Home = () => {
           <div className="Black-filter"></div>
           <StrongStat />
           <AverageWeightAndHeight />
-          <div className="Character__grid">{
+          {
+            !team.length ? 
+              <div className="Noteam__title">
+                <h1 className="Noteam__title-item">Create your team</h1>
+              </div>
+            : <div className="Character__grid">{
             team.map(item => {
               return <CharacterCard {...item} key={item.id} isTeam/>
             })
-          }</div>
+            }</div>
+          }
           <StatsList />
         </main>
       <Footer />

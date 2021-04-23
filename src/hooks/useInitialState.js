@@ -97,6 +97,39 @@ const useInitialState = () => {
       Villains: state.Villains.filter(item => item.id !== props.id)
     })
   }
+  const addVillain = (props) => {
+    setState({
+      ...state,
+      Villains: [
+        ...state.Villains,
+        props
+      ]
+    })
+    setTeam({
+      ...Team,
+      team: [
+        ...Team.team,
+        props
+      ]
+    })
+  }
+
+  const addHero = (props) => {
+    setState({
+      ...state,
+      Heroes: [
+        ...state.Heroes,
+        props
+      ]
+    })
+    setTeam({
+      ...Team,
+      team: [
+        ...Team.team,
+        props
+      ]
+    })
+  }
 
   const removeFromTeam = (props) => {
      setTeam({
@@ -112,6 +145,8 @@ const useInitialState = () => {
     removeHero,
     removeFromTeam,
     removeVillain,
+    addVillain,
+    addHero,
     logOut
   }
 }

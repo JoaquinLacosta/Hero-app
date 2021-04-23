@@ -19,11 +19,9 @@ const Heroes = () => {
     setResults(heroes.results)
   }
 
-  console.log(results)
-
   return(
     <>
-      <Header />
+      <Header isHeroes/>
       <main className="Container">
         <div className="Black-filter"></div>
         <div className="Input__container">
@@ -36,7 +34,7 @@ const Heroes = () => {
           {
             typeof results == "undefined" ? null
             : <div className="Character__grid">
-                {results.map(item => <CharacterCard {...item}/>)}
+                {results.map(item => <CharacterCard key={item.id} {...item}/>)}
               </div>
           }
         </div>

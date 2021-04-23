@@ -1,12 +1,13 @@
 import React, { useContext } from "react"
 import AppContext from "../context/AppContext"
 import RemoveButton from "../components/RemoveButton"
+import AddButtom from "../components/AddButton"
 import { Link } from "react-router-dom"
 import "./styles/CharacterCard.scss"
 
 const CharacterCard = (props) => {
-  const { removeFromTeam, removeHero, removeVillain, state } = useContext(AppContext)
-  console.log(state)
+  const { removeFromTeam, removeHero, removeVillain, state, addVillain, addHero } = useContext(AppContext)
+  const isHero = props.biography.alignment == "good"
   const handleRemove = (props) => () => {
     if(props.biography.alignment == "good") {
       removeHero(props)
@@ -17,7 +18,15 @@ const CharacterCard = (props) => {
       removeFromTeam(props)
     }
   }
-  console.log(props)
+
+  const Hero = (props) => () => {
+    addHero(props)
+  }
+
+  const Villain = (props) => () => {
+    addVillain(props)
+  }
+
 
   return(
     <div className="Character__card">
@@ -36,7 +45,7 @@ const CharacterCard = (props) => {
         <div className="Character__buttons">
           {
             props.isTeam ? <RemoveButton onClick={handleRemove(props)} className="Character__buttons-remove" title="Remove from team" />
-            : <button onClick={handleRemove(props)} className="Character__buttons-remove">Add to team</button>
+            : <AddButtom {...props}  onClick={isHero ? Hero(props) : Villain(props)} />
           }
           
           <Link to={`/character/${props.id}`} className="Details__button">Details</Link>
