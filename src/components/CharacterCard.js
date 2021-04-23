@@ -1,14 +1,23 @@
 import React, { useContext } from "react"
 import AppContext from "../context/AppContext"
+import RemoveButton from "../components/RemoveButton"
 import { Link } from "react-router-dom"
 import "./styles/CharacterCard.scss"
 
 const CharacterCard = (props) => {
-  const { removeHero } = useContext(AppContext)
-
-  const handleRemove = (id) => () => {
-    removeHero(id)
+  const { removeFromTeam, removeHero, removeVillain, state } = useContext(AppContext)
+  console.log(state)
+  const handleRemove = (props) => () => {
+    if(props.biography.alignment == "good") {
+      removeHero(props)
+      removeFromTeam(props)
+    }
+    if(props.biography.alignment == "bad") {
+      removeVillain(props)
+      removeFromTeam(props)
+    }
   }
+  console.log(props)
 
   return(
     <div className="Character__card">
@@ -26,11 +35,11 @@ const CharacterCard = (props) => {
         </ul>
         <div className="Character__buttons">
           {
-            props.isTeam ? <button onClick={handleRemove(props.id)} className="Character__buttons-remove">Remove from team</button>
-            : <button onClick={handleRemove(props.id)} className="Character__buttons-remove">Add to team</button>
+            props.isTeam ? <RemoveButton onClick={handleRemove(props)} className="Character__buttons-remove" title="Remove from team" />
+            : <button onClick={handleRemove(props)} className="Character__buttons-remove">Add to team</button>
           }
           
-          <Link to={`/${props.id}`} className="Details__button">Details</Link>
+          <Link to={`/character/${props.id}`} className="Details__button">Details</Link>
         </div>
       </div>
     </div>

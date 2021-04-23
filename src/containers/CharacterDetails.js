@@ -4,6 +4,7 @@ import axios from "axios"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import AppContext from "../context/AppContext"
+import Loader from "../components/Loader"
 import "./styles/CharacterDetails.scss"
 
 const CharacterDetails = () => {
@@ -32,7 +33,9 @@ const CharacterDetails = () => {
       <main className="Container">
         <div className="Black-filter"></div>
         <div className="Hero__description">
-          {typeof details == "undefined" ? null :
+          {typeof details == "undefined" ? <div className="Description__container">
+              <Loader />
+          </div> :
             details.map(item => (
               <div className="Description__container" key={item.id}>
                 <div className="Description__container-image">
