@@ -8,6 +8,9 @@
   background-color: #0787c2;
   margin-bottom: 2px;
   cursor: pointer;
+  &.disabled {
+    background-color: #545657;
+  }
   &:hover {
     background-color: #339fd1;
   }

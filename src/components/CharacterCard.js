@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 import "./styles/CharacterCard.scss"
 
 const CharacterCard = (props) => {
-  const { removeFromTeam, removeHero, removeVillain, state, addVillain, addHero } = useContext(AppContext)
+  const { removeFromTeam, removeHero, removeVillain, addVillain, addHero } = useContext(AppContext)
   const isHero = props.biography.alignment == "good"
   const handleRemove = (props) => () => {
     if(props.biography.alignment == "good") {

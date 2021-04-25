@@ -4,14 +4,17 @@ import axios from "axios"
 const useHeroes = (api) => {
   const [heroes, setHeroes] = useState()
   useEffect(() => {
-    axios.get(api)
+    axios({
+      url: api,
+      method: "GET"
+    })
       .then(data => {
         if(data.status == 200) {
           setHeroes(data.data)
         }
       })
       .catch(err => {
-        console.log(err)
+        alert("Error calling api")
       })
   }, [api])
 

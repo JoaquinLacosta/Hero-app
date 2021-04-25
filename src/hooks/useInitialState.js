@@ -78,12 +78,8 @@ const useInitialState = () => {
 }
 
   const logOut = () => {
-    setState({
-      ...state,
-      User: {}
-    })
+    localStorage.removeItem("token")
   }
-
 
   const removeHero = (props) => {
     setState({

@@ -4,8 +4,8 @@ import { Link } from "react-router-dom"
 import AppContext from "../context/AppContext"
 
 const Header = ({ isLogin, isHeroes }) => {
-  const { state, logOut } = useContext(AppContext)
-  const hasUser = Object.keys(state.User).length
+  const { logOut } = useContext(AppContext)
+  const hasUser = localStorage.getItem("token")
   return(
     <header className="Header">
       <div className="Header__title">

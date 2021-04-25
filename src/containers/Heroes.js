@@ -1,4 +1,5 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
+import { Redirect } from "react-router-dom"
 import useHeroes from "../hooks/useHeroes"
 import { ImSearch } from "react-icons/im"
 import Header from "../components/Header"
@@ -8,15 +9,31 @@ import "./styles/Heroes.scss"
 
 const Heroes = () => {
   const [search, setSearch] = useState("")
-  const [results, setResults] = useState()
-  const heroes = useHeroes(`https://superheroapi.com/api/4323813290981998/search/${search}`)
+  const [results, setResults] = useState([])
+  const [title, setTitle] = useState("Not found heroes")
+
+  useEffect(() => {
+    if(localStorage.getItem("token")) {}
+  }, [])
+
+  if(!localStorage.getItem("token")) {
+    return <Redirect to="/login"/>
+   } 
+
+  const heroes = useHeroes(`https://superheroapi.com/api/4323813290981998/search/${search.toString()}`)
 
   const handleChange = (e) => {
     setSearch(e.target.value)
   }
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    setResults(heroes.results)
+    if(!search.length || typeof search == "undefined") {
+      alert("Insert hero name")
+      setTitle("Insert hero name")
+    } else {
+      setResults(heroes.results)
+    }
   }
 
   return(
@@ -27,12 +44,12 @@ const Heroes = () => {
         <div className="Input__container">
           <form onSubmit={handleSubmit}>
             <div>
-            <input placeholder="Search your favorite hero or villain!" onChange={handleChange} type="text" name="heroname" value={search}/>
+            <input placeholder="Search your heroes ex: Ironman" onChange={handleChange} type="text" name="heroname" value={search}/>
             <button type="submit"><i>{ImSearch()}</i></button>
             </div>
           </form>
           {
-            typeof results == "undefined" ? null
+             typeof results == "undefined" || !results.length ? <div className="Heroes__title-container"><h1>{title}</h1></div>
             : <div className="Character__grid">
                 {results.map(item => <CharacterCard key={item.id} {...item}/>)}
               </div>

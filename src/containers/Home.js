@@ -1,5 +1,5 @@
-import React, { useContext } from "react"
-import { Redirect } from "react-router-dom"
+import React, { useContext, useEffect } from "react"
+import { Redirect, Link } from "react-router-dom"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import StrongStat from "../components/StrongStat"
@@ -11,11 +11,19 @@ import AppContext from "../context/AppContext"
 
 
 const Home = () => {
-  const { state, Team } = useContext(AppContext)
+  const { Team } = useContext(AppContext)
   const { team } = Team
-  //  if(!Object.keys(state.User).length) {
-  //    return <Redirect to="/login" />
-  //  } 
+
+
+  useEffect(() => {
+    if(localStorage.getItem("token")) {
+      
+     } 
+  }, [])
+
+  if(!localStorage.getItem("token")) {
+    return <Redirect to="/login"/>
+   } 
     return <>
       <Header/>
         <main className="Container">
@@ -25,7 +33,7 @@ const Home = () => {
           {
             !team.length ? 
               <div className="Noteam__title">
-                <h1 className="Noteam__title-item">Create your team</h1>
+                <Link className="Noteam__title-item" to="/heroes">Create your team</Link>
               </div>
             : <div className="Character__grid">{
             team.map(item => {

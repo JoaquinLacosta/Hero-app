@@ -8,7 +8,6 @@ import Heroes from "../containers/Heroes"
 import useInitialState from "../hooks/useInitialState"
 import AppContext from "../context/AppContext"
 
-
 function App() {
   const initialState = useInitialState()
   return(

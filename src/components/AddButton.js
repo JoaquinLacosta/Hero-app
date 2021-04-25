@@ -13,8 +13,8 @@ const AddButton = (props) => {
   return (
     <>
     {
-      isHero ? <button onClick={props.onClick} disabled={fullHeroes} className="Character__buttons-add">{ fullHeroes ? "You cannot add more heroes" : "Add hero" }</button>
-      : <button onClick={props.onClick} disabled={fullVillains} className="Character__buttons-add">{ fullVillains ? "You cannot add more villains" : "Add villain" }</button>
+      isHero ? <button onClick={props.onClick} disabled={fullHeroes} className={fullHeroes ? "Character__buttons-add disabled" : "Character__buttons-add"}>{ fullHeroes ? "You cannot add more heroes" : "Add hero" }</button>
+      : <button onClick={props.onClick} disabled={fullVillains} className={fullVillains ? "Character__buttons-add disabled" : "Character__buttons-add"}>{ fullVillains ? "You cannot add more villains" : "Add villain" }</button>
     }
   </>
   )
