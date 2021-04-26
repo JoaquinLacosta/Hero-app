@@ -32,7 +32,7 @@ const Login = () => {
     } else if(form.email === "challenge@alkemy.org" && form.password === "react") {
       axios.post(proxy+url, JSON.stringify(form), {
         headers: { 
-          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Origin': 'true',
           'Content-Type': 'application/json'
         }
       })
