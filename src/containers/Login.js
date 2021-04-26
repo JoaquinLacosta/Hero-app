@@ -30,7 +30,6 @@ const Login = () => {
     } else if(form.email !== "challenge@alkemy.org" || form.password !== "react") {
       setMessage("Wrong email or password")
     } else if(form.email === "challenge@alkemy.org" && form.password === "react") {
-      setMessage("Logged")
       axios.post(proxy+url, JSON.stringify(form), {
         headers: { 
           'Access-Control-Allow-Origin': '*',
@@ -39,10 +38,11 @@ const Login = () => {
       })
         .then(res => {
           localStorage.setItem("token" ,res.data.token)
+          setMessage("Logged")
           history.push("/")
         })
         .catch(err => {
-          alert("Login error")
+          setMessage("Login error")
         })
     }
   }
