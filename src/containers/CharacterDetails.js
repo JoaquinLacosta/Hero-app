@@ -1,14 +1,12 @@
-import React, { useContext, useEffect, useState } from "react"
-import { useParams, Redirect } from "react-router-dom"
+import React, { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
 import axios from "axios"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
-import AppContext from "../context/AppContext"
 import Loader from "../components/Loader"
 import "./styles/CharacterDetails.scss"
 
 const CharacterDetails = () => {
-  const { state } = useContext(AppContext)
   const [details, setDetails] = useState()
   const { id } = useParams()
   const proxy = "https://thingproxy.freeboard.io/fetch/"
@@ -22,9 +20,6 @@ const CharacterDetails = () => {
       })
       .catch(err => console.log(err))
   }, [])
-  //  if(!Object.keys(state.User).length) {
-  //    return <Redirect to="/login" />
-  //  } 
 
   console.log(details)
   
