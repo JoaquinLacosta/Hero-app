@@ -11,9 +11,10 @@ const CharacterDetails = () => {
   const { state } = useContext(AppContext)
   const [details, setDetails] = useState()
   const { id } = useParams()
+  const proxy = "https://thingproxy.freeboard.io/fetch/"
   const url = `https://superheroapi.com/api/4323813290981998/${id}`
   useEffect(() => {
-    axios.get(url)
+    axios.get(proxy+url)
       .then(data => {
         if(data.status == 200) {
           setDetails([data.data])
