@@ -9,6 +9,9 @@ const Login = () => {
   const [form, setForm] = useState()
   const [message, setMessage] = useState()
   const history = useHistory()
+  const proxy = "https://thingproxy.freeboard.io/fetch/"
+  const url = "http://challenge-react.alkemy.org"
+
 
   const handleChange = (e) => {
     setForm({
@@ -28,9 +31,19 @@ const Login = () => {
       setMessage("Wrong email or password")
     } else if(form.email === "challenge@alkemy.org" && form.password === "react") {
       setMessage("Logged")
-      localStorage.setItem("token", "xd")
-      console.log("ahora si se hace la peticion")
-      history.push("/")
+      axios.post(proxy+url, JSON.stringify(form), {
+        headers: { 
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(res => {
+          localStorage.setItem("token" ,res.data.token)
+          history.push("/")
+        })
+        .catch(err => {
+          alert("Login error")
+        })
     }
   }
 

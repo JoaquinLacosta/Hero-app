@@ -3,9 +3,10 @@ import axios from "axios"
 
 const useHeroes = (api) => {
   const [heroes, setHeroes] = useState()
+  const proxy = "https://thingproxy.freeboard.io/fetch/"
   useEffect(() => {
     axios({
-      url: api,
+      url: proxy+api,
       method: "GET"
     })
       .then(data => {
