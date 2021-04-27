@@ -1,5 +1,6 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { Redirect, Link } from "react-router-dom"
+import useLocalStorage from "../hooks/useLocalStorage"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import StrongStat from "../components/StrongStat"
@@ -13,15 +14,9 @@ import AppContext from "../context/AppContext"
 const Home = () => {
   const { Team } = useContext(AppContext)
   const { team } = Team
+  const token = useLocalStorage()
 
-
-  useEffect(() => {
-    if(localStorage.getItem("token")) {
-      
-     } 
-  }, [])
-
-  if(!localStorage.getItem("token")) {
+  if(!token) {
     return <Redirect to="/login"/>
    } 
     return <>

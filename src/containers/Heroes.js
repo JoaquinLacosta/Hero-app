@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
+import useLocalStorage from "../hooks/useLocalStorage"
 import { Redirect } from "react-router-dom"
 import useHeroes from "../hooks/useHeroes"
 import { ImSearch } from "react-icons/im"
@@ -11,16 +12,13 @@ const Heroes = () => {
   const [search, setSearch] = useState("")
   const [results, setResults] = useState([])
   const [title, setTitle] = useState("Not found heroes")
+  const token = useLocalStorage()
 
-  useEffect(() => {
-    if(localStorage.getItem("token")) {}
-  }, [])
-
-  if(!localStorage.getItem("token")) {
+  if(!token) {
     return <Redirect to="/login"/>
    } 
 
-  const heroes = useHeroes(`https://superheroapi.com/api/4323813290981998/search/${search.toString()}`)
+  const heroes = useHeroes(`https://superheroapi.com/api/4323813290981998/search/${search}`)
 
   const handleChange = (e) => {
     setSearch(e.target.value)
