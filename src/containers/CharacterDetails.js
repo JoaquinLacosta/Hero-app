@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Redirect } from "react-router-dom"
 import axios from "axios"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Loader from "../components/Loader"
+import useLocalStorage from "../hooks/useLocalStorage"
 import "./styles/CharacterDetails.scss"
 
 const CharacterDetails = () => {
+  const token = useLocalStorage()
   const [details, setDetails] = useState()
   const { id } = useParams()
   const proxy = "https://thingproxy.freeboard.io/fetch/"
@@ -18,10 +20,12 @@ const CharacterDetails = () => {
           setDetails([data.data])
         }
       })
-      .catch(err => console.log(err))
+      .catch(err => alert("Error calling api"))
   }, [])
 
-  console.log(details)
+  if(!token) {
+    return <Redirect to="/login"/>
+   } 
   
   return(
     <>
