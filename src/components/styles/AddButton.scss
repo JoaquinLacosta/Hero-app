@@ -10,8 +10,11 @@
   cursor: pointer;
   &.disabled {
     background-color: #545657;
+    &:hover {
+      background-color: #3d3e3f;
+    }
   }
   &:hover {
-    background-color: #339fd1;
+    background-color: #0498dd;
   }
 }
