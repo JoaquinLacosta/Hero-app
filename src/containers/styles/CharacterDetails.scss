@@ -14,8 +14,7 @@
       border: 2px rgb(173, 173, 173) solid;
       border-radius: 5px;
       background-color: rgba($color: #291720, $alpha: 0.7);
-      width: 100%;
-      max-width: 300px;
+      width: 30%;
       img {
         width: 100%;
         border-top-left-radius: 5px;
@@ -35,16 +34,17 @@
       .Biography__item {
         padding-top: 5px;
         h2 {
+          font-size: 2rem;
           display: inline-block;
           border-bottom: 2px white solid;
         }
         p {
-          font-size: 1.6rem;
+          font-size: 1.8rem;
           padding: 5px 0;
           font-weight: 600;
           span {
             font-weight: 400;
-            font-size: 1.4rem;
+            font-size: 1.6rem;
           }
         }
       }
@@ -55,6 +55,7 @@
 @media screen and(max-width: 425px) {
   .Description__container {
     &-image {
+      min-width: 300px;
       margin: 0 auto;
     }
     &-biography {
