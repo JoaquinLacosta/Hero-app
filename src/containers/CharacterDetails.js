@@ -39,18 +39,18 @@ const CharacterDetails = () => {
             details.map(item => (
               <div className="Description__container" key={item.id}>
                 <div className="Description__container-image">
-                  <img src={item.image.url} alt={item.name + "photo"}/>
+                  <img src={item.image.url} alt={item.name + " photo"}/>
                   <div>
-                    <p>Intelligence: {item.powerstats.intelligence}</p>
-                    <p>Strength: {item.powerstats.strength}</p>
-                    <p>Speed: {item.powerstats.speed}</p>
-                    <p>Durability: {item.powerstats.durability}</p>
-                    <p>Power: {item.powerstats.power}</p>
-                    <p>Combat: {item.powerstats.combat}</p>
+                    <p>Intelligence: <span>{item.powerstats.intelligence}</span></p>
+                    <p>Strength: <span>{item.powerstats.strength}</span></p>
+                    <p>Speed: <span>{item.powerstats.speed}</span></p>
+                    <p>Durability: <span>{item.powerstats.durability}</span></p>
+                    <p>Power: <span>{item.powerstats.power}</span></p>
+                    <p>Combat: <span>{item.powerstats.combat}</span></p>
                   </div>
                 </div>
                 <div className="Description__container-biography">
-                  <h1>{item.name}</h1>
+                  <h1>Name: <span>{item.name}</span></h1>
                   <article className="Biography__item">
                     <h2>Appearance</h2>
                     <p>Eye color: <span>{item.appearance["eye-color"]}.</span></p>
