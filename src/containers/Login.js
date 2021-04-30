@@ -42,7 +42,10 @@ const Login = () => {
           }
         })
         .catch(err => {
-          setMessage("Login error")
+          if(err) {
+            setMessage("Login Error")
+          }
+          setMessage("Wrong email or password")
         })
     }
   }
