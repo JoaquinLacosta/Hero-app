@@ -26,7 +26,7 @@ const Heroes = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if(!search.length || typeof search == "undefined") {
+    if(!search.length || search.length <= 2 || typeof search == "undefined") {
       alert("Insert hero name")
       setTitle("Insert hero name")
     } else {
