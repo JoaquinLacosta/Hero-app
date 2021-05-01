@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "jest",
     "start": "webpack serve --mode development",
     "build": "webpack"
   },
@@ -14,6 +15,7 @@
     "@babel/core": "^7.13.16",
     "@babel/preset-env": "^7.13.15",
     "@babel/preset-react": "^7.13.13",
+    "@testing-library/react-hooks": "^5.1.2",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.4",
     "file-loader": "^6.2.0",
