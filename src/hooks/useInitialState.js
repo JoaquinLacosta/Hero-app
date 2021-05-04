@@ -133,6 +133,7 @@ const useInitialState = () => {
        team: Team.team.filter(item => item.id !== props.id)
      })
      }
+
   return {
     state,
     Team,
